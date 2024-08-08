@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "title": "Data Structures And Algorithms Made Easy: Data Structures And Algorithmic Puzzles",
+        "author": "Narasimha Karumanchi",
+        "price": 581,
+        "rating": 4,
+        "category":"C++",
+        "cover": "https://m.media-amazon.com/images/I/A1l5b1RPffL._AC_UY218_.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Data Structure and Algorithmic Thinking with Python",
+        "author": "Narasimha Karumanchi",
+        "price": 599,
+        "rating": 5,
+        "category":"Python",
+        "cover": "https://m.media-amazon.com/images/I/61mF67j52OL._AC_UY218_.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Problem Solving in Data Structures & Algorithms Using Java",
+        "author": "Hemant Jain",
+        "price": 600,
+        "rating": 3,
+        "category":"Java",
+        "cover": "https://m.media-amazon.com/images/I/61ttPI-O3SL._AC_UY218_.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Think Like a Programmer: An Introduction to Creative Problem Solving",
+        "author": "V. Anton",
+        "price": 1600,
+        "rating": 4,
+        "category":"C++",
+        "cover": "https://m.media-amazon.com/images/I/81vuUsOPM2L._AC_UY218_.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Once Upon an Algorithm: How Stories Explain Computing",
+        "author": "Martin Erwig",
+        "price": 1900,
+        "rating": 4,
+        "category":"Java",
+        "cover": "https://m.media-amazon.com/images/I/81risGhI7nL._AC_UY218_.jpg"
+    },
+    {
+        "id": 6,
+        "title": "  Code: The Hidden Language of Computer Hardware and Software ",
+        "author": "Charles Petzold",
+        "price": 2405,
+        "rating": 4.7,
+        "category":"Computer",
+        "cover": "https://m.media-amazon.com/images/I/515myo2UtFL._SY342_.jpg"
+    }
+    ,
+    {
+        "id": 7,
+        "title": "  Joy of X, The (lead Title) ",
+        "author": "Strogatz Steven",
+        "price": 255,
+        "rating": 2,
+        "category":"Misc",
+        "cover": "https://m.media-amazon.com/images/I/81NOHCMu6RL._SY342_.jpg"
+    }
+]
