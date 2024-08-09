@@ -71,6 +71,7 @@ aside.filters input[type="range"] {
 aside.filters input[type="range"] {
     -webkit-appearance: none;
     background: #e9ecef;
+    padding-left: 0rem;
 }
 
 aside.filters input[type="range"]::-webkit-slider-thumb {
