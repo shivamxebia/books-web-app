@@ -12,10 +12,8 @@ Array.prototype.myFilter = function(callBackFunc){
 
 Array.prototype.myMap = function(callBackFunc){
     var arr = [];
-    for(var i =0;i<this.length;i++){
-        if(this[i]%2==0){
-            arr.push(callBackFunc(this[i],i,this))
-        }
+    for(var i =0;i<this.length;i++){ 
+        arr.push(callBackFunc(this[i],i,this))
     }
     return arr;
 }
