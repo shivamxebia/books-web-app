@@ -7,10 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const ratingFilter = document.getElementById('ratingFilter');
 
     let books = [];
+    let originalBooks = [];
+
+    // Fetch and display books
     fetch('books.json')
         .then(response => response.json())
         .then(data => {
             books = data;
+            originalBooks = data;
             displayBooks(books);
         })
         .catch(error => console.error('Error fetching books:', error));
@@ -32,34 +36,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Filter books by category
+    function filterByCategory() {
+        const selectedCategory = categoryFilter.value;
+        if (selectedCategory === '') {
+            books = originalBooks;
+        } else {
+            books = books.filter(book => book.category === selectedCategory);
+        }
+        applyFilters();
+    }
 
-    searchInput.addEventListener('input', filterBooks);
+    // Filter books by price
+    function filterByPrice() {
+        const maxPrice = parseFloat(priceRange.value);
+        books = books.filter(book => book.price <= maxPrice);
+        applyFilters();
+    }
 
+    // Filter books by rating
+    function filterByRating() {
+        const selectedRating = parseFloat(ratingFilter.value);
+        if (isNaN(selectedRating)) {
+            books = originalBooks;
+        } else {
+            books = books.filter(book => Math.floor(book.rating) == selectedRating);
+        }
+        applyFilters();
+    }
+
+    // Filter books by search term
+    function filterBySearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm.length === 0) {
+            books = originalBooks;
+        } else {
+            books = books.filter(book =>
+                book.title.toLowerCase().includes(searchTerm) ||
+                book.author.toLowerCase().includes(searchTerm)
+            );
+        }
+        applyFilters();
+    }
+
+    // Apply all filters
+    function applyFilters() {
+        displayBooks(books);
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', function() {
+        resetBooks();
+        filterBySearch();
+    });
 
     priceRange.addEventListener('input', function() {
         priceValue.textContent = `₹${priceRange.value}`;
-        filterBooks();
+        resetBooks();
+        filterByPrice();
     });
 
-    ratingFilter.addEventListener('change', filterBooks);
+    ratingFilter.addEventListener('change', function() {
+        resetBooks();
+        filterByRating();
+    });
 
-    function filterBooks() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const selectedCategory = categoryFilter.value;
-        const maxPrice = parseFloat(priceRange.value);
-        const selectedRating = parseFloat(ratingFilter.value);
+    categoryFilter.addEventListener('change', function() {
+        resetBooks();
+        filterByCategory();
+    });
 
-        const filteredBooks = books.filter(book => {
-            const matchesSearch = book.title.toLowerCase().includes(searchTerm) ||
-                                  book.author.toLowerCase().includes(searchTerm);
-            const matchesCategory = selectedCategory === '' || book.category === selectedCategory;
-            const matchesPrice = book.price <= maxPrice;
-            const matchesRating = isNaN(selectedRating) || book.rating >= selectedRating;
-
-            return matchesSearch && matchesCategory && matchesPrice && matchesRating;
-        });
-
-        displayBooks(filteredBooks);
+    function resetBooks() {
+        books = originalBooks;
     }
-});
 
+    // Initialize the price value display
+    priceValue.textContent = `₹${priceRange.value}`;
+});
